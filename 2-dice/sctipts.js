@@ -1,3 +1,5 @@
+'use strict'
+
 // Поддерживаемые типы: D4, D6, D8, D10, D12, D16, D20.
 function game(start) {
     let numMin = 1;
