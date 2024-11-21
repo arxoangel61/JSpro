@@ -1,7 +1,7 @@
 'use strict'
-
+/*
 let date1 = '2010-11-21';
-let date2 = '2010-11-22'; 
+let date2 = '2010-11-21'; 
 
 function getDate(birthDate, currentDate) {
     const userBirthDate = new Date(birthDate);
@@ -20,3 +20,30 @@ function getDate(birthDate, currentDate) {
 
 console.log(getDate(date1, '2024-11-21')); //true
 console.log(getDate(date2, '2024-11-21')); //false
+*/
+
+
+const VALID_AGE = 14
+const dt1 = '2010-11-21' // Сегодняшняя дата
+const dt2 = '2010-11-22' // Сегодняшняя дата + 1 день
+
+function hasBdayThisYear (date) {
+    const currentMonth = new Date().getMonth()
+    const currentDate = new Date().getDate()
+
+    const bdayMonth = new Date(date).getMonth()
+    const bdayDate = new Date(date).getDate()
+
+    return currentMonth > bdayMonth || (currentDate >= bdayMonth && currentDate >= bdayDate)
+}
+
+function isValidAge(date) {
+    const currentYear = new Date().getFullYear()
+    const bdayYear = new Date(date).getFullYear()
+    const age = currentYear - bdayYear - (hasBdayThisYear(date) ? 0 : 1)
+
+    return age >= VALID_AGE
+}
+
+console.log(isValidAge(dt1))
+console.log(isValidAge(dt2))
