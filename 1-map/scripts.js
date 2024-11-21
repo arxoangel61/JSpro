@@ -30,8 +30,6 @@ console.log(finalSet(arr))
 
 
 
-
-
 function findDuplicateIndices(arr) {
     // Объект для хранения индексов
     const indexMap = arr.reduce((acc, num, index) => {
@@ -73,7 +71,8 @@ function idNameSet(idItem, nameItem) {
         acc[current.id] = current.name;
         return acc;
     }, {});
-    let idNameSet = new Set(Object.entries(resultObject).map(([id, name]) => `${id}: ${name}`));
+    
+    let idNameSet = [...new Set(arr.map(item => arr.find(el => item.id === el.id)))]
 
     return idNameSet
 }
