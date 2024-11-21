@@ -1,22 +1,22 @@
 'use strict'
 
+let date1 = '2010-11-21';
+let date2 = '2010-11-22'; 
 
-let date = '2022-01-01'
-let date2 = '1987-12-29'
+function getDate(birthDate, currentDate) {
+    const userBirthDate = new Date(birthDate);
+    const now = new Date(currentDate); // Используем фиксированную текущую дату
 
-function getDate(date) {
-    const now = new Date()
-    const userDate = new Date(date)
-    
-    if((now.getFullYear() - 14) < userDate.getFullYear()) {
-        return false
-    } else if((now.getFullYear() - 14) >= userDate.getFullYear()) {
-        return true
-    } else {
-        return none
-    }
-   
+    // Вычисляем разницу в миллисекундах
+    const ageInMilliseconds = now - userBirthDate;
+
+    // Преобразуем миллисекунды в годы
+    const millisecondsInAYear = 1000 * 60 * 60 * 24 * 365.25; // Учитывая високосные годы
+    const ageInYears = ageInMilliseconds / millisecondsInAYear;
+    // console.log(Math.floor(ageInYears))
+
+    return Math.floor(ageInYears) >= 14; // Возвращаем true, если больше 14 лет
 }
 
-console.log(getDate(date))
-console.log(getDate(date2))
+console.log(getDate(date1, '2024-11-21')); //true
+console.log(getDate(date2, '2024-11-21')); //false
