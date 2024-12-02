@@ -1,3 +1,6 @@
+'use strict'
+
+
 function happyNewYear(ms) {
     // Устанавливаем дату наступления нового года
     const end = new Date(2025, 0, 1, 0, 0, 0); // 1 января 2025 года
